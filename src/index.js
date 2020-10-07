@@ -68,12 +68,12 @@ class Game extends React.Component {
         }
 
         squares[i] = this.state.xIsNext ? 'X' : 'O';
-        this.setState({
+        this.setState(state => ({
             history: history.concat([{
                 squares: squares
             }]),
-            xIsNext: !this.state.xIsNext
-        });
+            xIsNext: !state.xIsNext
+        }));
     }
 
     render() {
@@ -83,7 +83,7 @@ class Game extends React.Component {
 
         let status;
         if(winner) {
-            status = 'Winner' + winner;
+            status = 'Winner ' + winner;
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
         }
